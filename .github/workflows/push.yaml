@@ -21,7 +21,7 @@ jobs:
       - name: Allow Scripts to run
         run: chmod +x createcidr.sh
       - name: Create CIDR Whitelist files
-        run: ./createdir.sh
+        run: ./createcidr.sh
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
