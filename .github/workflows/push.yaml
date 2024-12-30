@@ -18,8 +18,10 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - name: Create Google IPv4 CIDR Whitelist
-        run: curl -s -H "Accept: application/json" https://www.gstatic.com/ipranges/goog.json | jq -r '.prefixes[].ipv4Prefix | select (. != null)' >./GoogleIPv4.cidr
+      - name: Allow Scripts to run
+        run: chmod +x createcidr.sh
+      - name: Create CIDR Whitelist files
+        run: ./createdir.sh
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
