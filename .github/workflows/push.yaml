@@ -24,11 +24,11 @@ jobs:
         run: ./createcidr.sh
       - name: push
         uses: actions-x/commit@v6
-           with:
+        with:
             email: me@example.com
             name: ChillBill Actions AutoCommit
             branch: main
-            files: *.cidr
+            files: '*.cidr'
 #            token: ${{ secrets.edlwl_token }}
             force: true
 
