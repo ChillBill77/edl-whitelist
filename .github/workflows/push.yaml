@@ -21,12 +21,7 @@ jobs:
         run: chmod +x createcidr.sh
       - name: Create CIDR Whitelist files
         run: ./createcidr.sh
-      - name: push
-        uses: actions-x/commit@v6
+      - name: Commit and push the file
+        uses: maxgfr/github-commit-push-file@main
         with:
-            email: 'me@example.com'
-            name: 'ChillBill Actions AutoCommit'
-            branch: master
-            files: '*.cidr'
-#            token: ${{ secrets.edlwl_token }}
-            force: true
+          commit_name: 'FIX: Updated CIDR files.'
