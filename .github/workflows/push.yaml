@@ -8,7 +8,8 @@ on:
     - cron: '* */12 */10 * *'
   push:
     branches:
-      - master
+      - main
+      - '!**'
   workflow_dispatch:
 
 jobs:
