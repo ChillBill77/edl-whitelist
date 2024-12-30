@@ -31,11 +31,3 @@ jobs:
             files: '*.cidr'
 #            token: ${{ secrets.edlwl_token }}
             force: true
-
-#      - name: Commit changes
-#        uses: EndBug/add-and-commit@v9
-#        with:
-#          author_name: ChillBill77
-#          author_email: autopusher@noreply.com
-#          message: 'Updated CIDR list'
-#          add: '*.cidr'
