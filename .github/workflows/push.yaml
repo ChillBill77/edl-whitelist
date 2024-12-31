@@ -19,9 +19,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
       - name: Allow Scripts to run
-        run: chmod +x createcidr.sh
-      - name: Create CIDR Whitelist files
+        run: chmod +x *.sh
+      - name: Create CIDR Whitelist files (Original)
         run: ./createcidr.sh
+      - name: Create CIDR Whitelist files (Using the ASN)
+        run: ./createcidr.asn.sh
       - name: Commit and push the file
         uses: maxgfr/github-commit-push-file@main
         with:
