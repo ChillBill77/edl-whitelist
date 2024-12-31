@@ -18,6 +18,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
+      - name: Install some supporting files
+        run: apt-get install whois
       - name: Allow Scripts to run
         run: chmod +x *.sh
       - name: Create CIDR Whitelist files (Original)
