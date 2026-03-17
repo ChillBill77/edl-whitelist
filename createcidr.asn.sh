@@ -169,13 +169,19 @@ ARRAYS+=("MICROSOFT_ARRAY")
 for ARRAY in "${ARRAYS[@]}"
 do
 	echo "# $ARRAY // Last updated $(date)" > ./$ARRAY.asn.cidr.tmp
+	echo "# ASN route counts for $ARRAY" > ./lists/$ARRAY.asn.stats
+	echo "# ASN    ROUTES" >> ./lists/$ARRAY.asn.stats
 	# Extra step needed
         CARRAY=$ARRAY[@]
 	for ASN in "${!CARRAY}"
 	do
    		echo "#START AS:$ASN" 
-   		whois -h whois.radb.net -- "-i origin AS$ASN" | awk '/^route:/ {print $2;}' | sort | uniq >> ./$ARRAY.asn.cidr.tmp
+   		count=$(whois -h whois.radb.net -- "-i origin AS$ASN" | awk '/^route:/ {print $2;}' | sort -u | tee -a ./$ARRAY.asn.cidr.tmp | wc -l)
+		echo "AS$ASN $count" >> ./lists/$ARRAY.asn.stats
 	done
 	cat ./$ARRAY.asn.cidr.tmp | sort | uniq -u > ./lists/$ARRAY.asn.cidr
+	# Add a total count of unique routes for this array
+	total=$(grep -v '^#' ./lists/$ARRAY.asn.cidr | wc -l)
+	echo "TOTAL $total" >> ./lists/$ARRAY.asn.stats
 	rm -f ./$ARRAY.asn.cidr.tmp
 done
