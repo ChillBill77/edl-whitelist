@@ -21,7 +21,6 @@ join.secure.skypeassets.com
 mlccdnprod.azureedge.net
 *.sharepoint.com
 storage.live.com
-*.search.production.apac.trafficmanager.net
 *.search.production.emea.trafficmanager.net
 *.search.production.us.trafficmanager.net
 *.wns.windows.com
